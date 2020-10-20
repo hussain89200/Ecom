@@ -25,17 +25,17 @@ def about(request):
     return render(request, 'shop/about.html')
 
 def contact(request):
-    return HttpResponse('contact')
+    return render(request, 'shop/contact.html')
 
 def tracker(request):
-    return HttpResponse('tracker')
+    return render(request, 'shop/tracker.html')
 
 def search(request):
-    return HttpResponse('search')
+    return render(request, 'shop/search.html')
 
 def productview(request):
-    return HttpResponse('productview')
+    return render(request, 'shop/prodview.html')
 
 def checkout(request):
-    return HttpResponse('checkout')
+    return render(request, 'shop/checkout.html')
 
