@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Product
+from .models import Product, Contact
 from math import ceil
 def index(request):
     products = Product.objects.all()
@@ -25,6 +25,14 @@ def about(request):
     return render(request, 'shop/about.html')
 
 def contact(request):
+    if request.method == "POST":
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        city = request.POST.get('city', '')
+        phone = request.POST.get('phone', '')
+        desc = request.POST.get('desc', '')
+        contact = Contact(name= name, email=email, city=city, phone=phone, desc=desc)
+        contact.save()
     return render(request, 'shop/contact.html')
 
 def tracker(request):
@@ -33,8 +41,10 @@ def tracker(request):
 def search(request):
     return render(request, 'shop/search.html')
 
-def productview(request):
-    return render(request, 'shop/prodview.html')
+def productView(request,myid):
+    #fetch product
+    product = Product.objects.filter(id=myid)
+    return render(request, 'shop/prodview.html', {'product':product[0]})
 
 def checkout(request):
     return render(request, 'shop/checkout.html')
