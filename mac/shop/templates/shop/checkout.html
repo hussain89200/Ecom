@@ -87,7 +87,8 @@ if ($.isEmptyObject(cart)) {
 }
 document.getElementById('cart').innerHTML = sum;
 document.getElementById('totalPrice').innerHTML = totalPrice;
-$('#itemsJson').val(JSON.stringify(cart)); { % if thank % }
+$('#itemsJson').val(JSON.stringify(cart));
+{ % if thank % }
 alert('Thank for ordering with us. Your order id is {{id}}. Use your order id for tracking you product');
 localStorage.clear();
 document.location = "/shop"; { % endif % }
